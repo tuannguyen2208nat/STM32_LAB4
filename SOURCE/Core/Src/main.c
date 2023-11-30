@@ -64,10 +64,6 @@ static void MX_TIM2_Init(void);
   * @brief  The application entry point.
   * @retval int
   */
-void led1test()
-{
-	HAL_GPIO_TogglePin(LED_RED_GPIO_Port, LED_RED_Pin);
-}
 int main(void)
 {
   /* USER CODE BEGIN 1 */
@@ -99,7 +95,13 @@ HAL_TIM_Base_Start_IT(&htim2);
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-SCH_Add_Task(task2, 100, 200);
+SCH_Init();
+SCH_Add_Task(task0, 50, 50);
+SCH_Add_Task(task1, 100, 100);
+SCH_Add_Task(task2, 150, 150);
+SCH_Add_Task(task3, 200, 200);
+SCH_Add_Task(task4, 300, 0);
+SCH_Delete_Task(3);
   while (1)
   {
     /* USER CODE END WHILE */
